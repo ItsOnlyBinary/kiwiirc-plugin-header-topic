@@ -371,9 +371,7 @@ export default {
     max-height: initial;
     -webkit-line-clamp: initial;
     margin: 5px 0 0 0;
-    padding: 0 9px 6px 9px;
-    border: 1px solid var(--comp-border);
-    border-top: 0;
+    padding: 0 10px 7px 10px;
     border-radius: 0 0 12px 12px;
 }
 
