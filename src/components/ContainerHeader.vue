@@ -16,9 +16,18 @@
                 :key="buffer.id"
                 class="kiwi-header-options"
             >
-                <div
-                    v-for="plugin in pluginUiChannelElements" :key="plugin.id"
-                    v-rawElement="plugin.el"
+                <component
+                    :is="plugin.component"
+                    v-for="plugin in pluginUiChannelElements"
+                    :key="plugin.id"
+                    :plugin-props="{
+                        buffer: buffer,
+                        containerheader: self,
+                    }"
+                    v-bind="plugin.props"
+                    :network="network"
+                    :buffer="buffer"
+                    :sidebar-state="sidebarState"
                     class="kiwi-header-option"
                 />
                 <div
@@ -131,10 +140,18 @@
                         <i class="fa fa-user" aria-hidden="true" />
                     </a>
                 </div>
-                <div
+                <component
+                    :is="plugin.component"
                     v-for="plugin in pluginUiQueryElements"
                     :key="plugin.id"
-                    v-rawElement="plugin.el"
+                    :plugin-props="{
+                        buffer: buffer,
+                        containerheader: self,
+                    }"
+                    v-bind="plugin.props"
+                    :network="network"
+                    :buffer="buffer"
+                    :sidebar-state="sidebarState"
                     class="kiwi-header-option"
                 />
                 <div class="kiwi-header-option kiwi-header-option-leave">
@@ -179,6 +196,7 @@ export default {
     props: ['buffer', 'sidebarState'],
     data() {
         return {
+            self: this,
             pluginUiChannelElements: GlobalApi.singleton().channelHeaderPlugins,
             pluginUiQueryElements: GlobalApi.singleton().queryHeaderPlugins,
             prompts: {
