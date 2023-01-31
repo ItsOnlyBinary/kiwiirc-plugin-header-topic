@@ -354,11 +354,10 @@ export default {
 .kiwi-header-topic {
     align-self: center;
     text-align: left;
-    margin: 4px 10px;
+    margin: 5px 10px;
     font-size: 14px;
     line-height: 16px;
     max-height: 100%;
-    box-sizing: border-box;
     text-overflow: ellipsis;
     overflow: hidden;
     flex-shrink: 2;
@@ -371,8 +370,11 @@ export default {
     background-color: var(--brand-default-bg);
     max-height: initial;
     -webkit-line-clamp: initial;
-    padding: 0 10px 10px 10px;
-    margin: 4px 0 0 0;
+    margin: 5px 0 0 0;
+    padding: 0 9px 6px 9px;
+    border: 1px solid var(--comp-border);
+    border-top: 0;
+    border-radius: 0 0 12px 12px;
 }
 
 .kiwi-header-options {
