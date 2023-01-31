@@ -10,7 +10,9 @@
                     <div class="kiwi-header-name-full">{{ buffer.name }}</div>{{ buffer.name }}
                 </div>
             </div>
-            <div class="kiwi-header-topic" v-html="formattedTopic" />
+            <div class="kiwi-header-topic-container">
+                <div class="kiwi-header-topic" v-html="formattedTopic" />
+            </div>
             <div
                 v-if="isJoined && isConnected"
                 :key="buffer.id"
@@ -345,26 +347,32 @@ export default {
 }
 
 .kiwi-header-name:hover .kiwi-header-name-full {
-    background-color: inherit;
+    background-color: var(--brand-default-bg);
     display: block;
 }
 
 .kiwi-header-topic {
     align-self: center;
     text-align: left;
-    padding: 4px 10px;
-    font-size: 10px;
-    line-height: 12px;
+    margin: 4px 10px;
+    font-size: 14px;
+    line-height: 16px;
     max-height: 100%;
     box-sizing: border-box;
     text-overflow: ellipsis;
     overflow: hidden;
     flex-shrink: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 .kiwi-header-topic:hover {
-    background-color: inherit;
-    overflow: visible;
+    background-color: var(--brand-default-bg);
+    max-height: initial;
+    -webkit-line-clamp: initial;
+    padding: 0 10px 10px 10px;
+    margin: 4px 0 0 0;
 }
 
 .kiwi-header-options {
